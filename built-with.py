@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-#most recent backup is in bkup.py
 
 import httplib
 import urllib
@@ -8,11 +7,11 @@ from os.path import exists
 
 def webrequest(line):
 #define a function that accepts the input from the for loop in main()
-    url = "https://api.builtwith.com/v11/api.json?KEY=213e029b-e519-48c1-9a35-cb5f2ed2de35&LOOKUP=%s" % line
+    url = "https://api.builtwith.com/v11/api.json?KEY=<your-key>&LOOKUP=%s" % line
     response = urllib.urlopen(url)
     r = response.read()
     # Create a request to the URL and read the response
-    filename = '/Users/vrajkumar/Desktop/Python/Project/files/%s.json' % line
+    filename = '<your-path>/%s.json' % line
     if exists(filename) == False:
     #Function used to check for the existance of a file
         with open(filename, 'w') as directory:
@@ -23,7 +22,7 @@ def webrequest(line):
 
 def search(line, component):
 
-    search_file = '/Users/vrajkumar/Desktop/Python/Project/files/%s.json' % line
+    search_file = '<your-path>/%s.json' % line
     with open(search_file, 'r') as data_file:
     #opens the file in the read mode, file name is sent by function dnl_search()
         data = json.load(data_file)
@@ -42,7 +41,7 @@ def search(line, component):
 
 def disp_all(all_comp):
 
-    url = "https://api.builtwith.com/v11/api.json?KEY=213e029b-e519-48c1-9a35-cb5f2ed2de35&LOOKUP=%s" % all_comp
+    url = "https://api.builtwith.com/v11/api.json?KEY=<your-key>&LOOKUP=%s" % all_comp
     response = urllib.urlopen(url)
     r = response.read()
     filename = "temp.json"
